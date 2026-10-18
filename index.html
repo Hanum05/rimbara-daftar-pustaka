@@ -1,1 +1,312 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>RIMBARA — Daftar Pustaka</title>
+<style>
+:root{--green:#176b45;--green-dark:#104b32;--green-soft:#eaf5ee;--orange:#f28c28;--orange-soft:#fff1df;--ink:#1f2d25;--muted:#607267;--paper:#fffefa;--line:#dce8df}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+body{margin:0;background:linear-gradient(135deg,#f3f8f2 0%,#fff9ef 100%);color:var(--ink);font:16px/1.72 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+header{background:linear-gradient(115deg,var(--green-dark),var(--green) 68%,#2b8056);color:#fff;padding:36px 22px 30px;border-bottom:6px solid var(--orange)}
+.header-inner{max-width:1200px;margin:auto}
+.eyebrow{margin:0 0 8px;color:#ffd7a6;font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.1;margin:0 0 10px;letter-spacing:-.035em}
+header p{margin:0;color:#e9f5ed;max-width:760px}
+.layout{max-width:1200px;margin:26px auto;padding:0 18px;display:grid;grid-template-columns:260px minmax(0,1fr);gap:24px;align-items:start}
+nav{position:sticky;top:16px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 8px 24px #174b3210}
+nav h2{font-size:1rem;color:var(--green-dark);margin:0 0 12px}
+nav a{display:block;text-decoration:none;color:var(--green-dark);padding:7px 9px;border-radius:8px;font-size:.9rem;line-height:1.35}
+nav a:hover,nav a:focus{background:var(--orange-soft);color:#8a4600;outline:2px solid transparent}
+nav .all{margin-top:10px;border-top:1px solid var(--line);padding-top:12px;color:#9a520d;font-weight:700}
+main{min-width:0;background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:0 10px 32px #174b320b;overflow:hidden}
+.toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:14px 20px;background:var(--green-soft);border-bottom:1px solid var(--line)}
+.toolbar span{font-size:.88rem;color:var(--green-dark);font-weight:700}
+button{font:inherit;font-size:.88rem;font-weight:750;color:#572d00;background:var(--orange-soft);border:1px solid #f5bd7a;border-radius:9px;padding:8px 12px;cursor:pointer}
+button:hover{background:#ffe1b9}
+#rendered{padding:clamp(18px,3vw,36px);overflow-wrap:anywhere}
+.content-line{margin:0 0 12px;white-space:pre-wrap}
+.content-line.heading{font-weight:800;color:var(--green-dark);font-size:1.12rem;margin-top:30px;padding:10px 12px;border-left:4px solid var(--orange);background:linear-gradient(90deg,var(--green-soft),transparent);border-radius:0 8px 8px 0;scroll-margin-top:20px}
+.content-line.title-line{font-size:1.55rem;line-height:1.25;font-weight:850;letter-spacing:-.025em;color:var(--green-dark);margin:0 0 24px}
+.content-line.label-line{font-weight:800;color:#8b4b0b;margin-top:18px;margin-bottom:4px}
+.content-line.reference{margin-top:26px;padding-top:17px;border-top:1px solid var(--line);font-weight:850;color:var(--green-dark);font-size:1.12rem;scroll-margin-top:20px}
+.content-line.section{font-weight:850;color:var(--green-dark);font-size:1.28rem;margin-top:32px}
+.content-line.bibliography{background:#f4f8f3;border-radius:8px;padding:12px 14px;border-left:3px solid var(--green);font-size:.95rem}
+a.external{color:#12653e;text-decoration-thickness:1px;text-underline-offset:3px;overflow-wrap:anywhere}
+a.external:hover{color:#a95100}
+.math{font-family:ui-serif,Georgia,serif;background:#fff4e5;padding:2px 5px;border-radius:4px}
+footer{max-width:1200px;margin:0 auto;padding:0 18px 30px;color:var(--muted);font-size:.85rem}
+@media(max-width:820px){.layout{grid-template-columns:1fr;margin-top:16px}nav{position:static}nav .nav-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px}#rendered{padding:18px}}
+@media(max-width:480px){body{font-size:15px}header{padding:28px 18px 24px}.layout{padding:0 10px}nav .nav-links{grid-template-columns:1fr}.content-line.title-line{font-size:1.3rem}}
+@media print{body{background:white}header{background:white;color:var(--green-dark);border-bottom:3px solid var(--orange);padding:18px}header p{color:var(--ink)}.layout{display:block;margin:0;max-width:none}nav,.toolbar button{display:none}main{border:0;box-shadow:none}#rendered{padding:0}.content-line{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header><div class="header-inner"><p class="eyebrow">RIMBARA · SUMBER ILMIAH</p><h1>RIMBARA — Daftar Pustaka</h1><p>Penjelasan Permasalahan, Komponen, dan Material Berdasarkan Sumber Ilmiah</p></div></header>
+<div class="layout">
+<nav aria-label="Navigasi referensi"><h2>Jelajahi referensi</h2><div class="nav-links" id="navLinks"></div><a class="all" href="#awal">Kembali ke awal ↑</a></nav>
+<main id="awal"><div class="toolbar"><span>Materi sumber lengkap · 16 referensi</span><button id="printBtn" type="button">Cetak / Simpan PDF</button></div><article id="rendered" aria-label="Materi sumber lengkap"></article></main>
+</div>
+<footer>RIMBARA — Daftar Pustaka</footer>
+<textarea id="rawSource" hidden>Tidak mengurangi atau menambah, ini di ubah jadi promp untuk membuat HTML RIMBARA DAFTAR PUSTAKA
+pastikan linknya dapat di klik untuk akses
+lalu warna halamannya hijau orange
 
+
+
+RIMBARA: Penjelasan Permasalahan, Komponen, dan Material Berdasarkan Sumber Ilmiah
+1. Permasalahan kebakaran lahan gambut
+Referensi 1 — Alexandra, Herdiansyah, dan Yulianto (2026)
+Judul: Peat Fires in Indonesia: A Socio-Ecological Synthesis Based on a Literature Review of Management Approaches
+Tautan sumber: https://doi.org/10.7226/jtfm.32.2.147
+Penjelasan isi sumber
+Pada sumber ini dijelaskan bahwa kebakaran gambut di Indonesia berkaitan dengan berbagai faktor, termasuk drainase, penebangan, perubahan penggunaan lahan, serta degradasi ekosistem gambut. Penelitian ini meninjau berbagai pendekatan pengelolaan kebakaran dan menekankan pentingnya kombinasi solusi teknis, pembasahan kembali lahan (rewetting), revegetasi, partisipasi masyarakat, dan kolaborasi berbagai pihak. Kajian tersebut juga menunjukkan perlunya evaluasi dampak jangka panjang agar upaya pengendalian kebakaran tidak hanya berfokus pada penanganan sesaat. 
+Kaitannya dengan permasalahan RIMBARA
+Informasi tersebut menjadi dasar bahwa penanganan kebakaran gambut membutuhkan pendekatan yang tidak hanya berorientasi pada pemadaman, tetapi juga pemantauan kondisi lahan dan pengelolaan air. RIMBARA dirancang sebagai teknologi pendukung untuk memantau perubahan suhu di bawah permukaan gambut dan kondisi distribusi air. Data dari sensor dapat membantu petugas menentukan titik yang perlu diperiksa lebih lanjut. Namun, RIMBARA tidak menggantikan upaya pembasahan kembali lahan, restorasi hidrologi, atau pengelolaan ekosistem gambut secara menyeluruh.
+Daftar pustaka
+Alexandra, P. C., Herdiansyah, H., &amp; Yulianto. (2026). Peat fires in Indonesia: A socio-ecological synthesis based on a literature review of management approaches. Jurnal Manajemen Hutan Tropika, 32(2), 147–162. https://doi.org/10.7226/jtfm.32.2.147
+Referensi 2 — Rein (2021), Smouldering Wildfires in Peatlands, Forests and the Arctic: Challenges and Perspectives
+Tautan sumber: https://doi.org/10.1016/j.coesh.2021.100296
+Penjelasan isi sumber
+Pada sumber ini dijelaskan bahwa kebakaran dapat berlangsung melalui dua proses utama, yaitu pembakaran dengan nyala api (flaming combustion) dan pembakaran membara (smouldering combustion). Pembakaran membara dapat berlangsung tanpa nyala api yang jelas dan tetap mengonsumsi bahan bakar organik. Pada lahan gambut, proses tersebut dapat berlangsung dalam waktu lama, sulit dideteksi, serta menghasilkan emisi gas dan partikel pencemar. Hilangnya nyala api di permukaan juga tidak selalu menandakan bahwa proses pembakaran telah berhenti. 
+Kaitannya dengan permasalahan RIMBARA
+Temuan ini menjelaskan alasan ilmiah mengapa deteksi suhu di bawah permukaan menjadi salah satu fitur penting RIMBARA. Pengamatan visual saja berpotensi tidak mengenali titik panas yang masih bertahan di dalam gambut. Termokopel tipe K pada kedalaman pengamatan tertentu dapat memberikan data temperatur yang membantu mengidentifikasi anomali termal. Data tersebut perlu dibandingkan dengan kondisi dasar tanah dan dikonfirmasi menggunakan indikator lain karena peningkatan suhu tidak selalu disebabkan oleh kebakaran.
+Daftar pustaka
+Rein, G. (2021). Smouldering wildfires in peatlands, forests and the Arctic: Challenges and perspectives. Current Opinion in Environmental Science &amp; Health, 24, 100296. https://doi.org/10.1016/j.coesh.2021.100296
+Referensi 3 — Syaufina (2016), Status of Peatland Fire Research in Indonesia
+Tautan sumber: https://doi.org/10.29244/j-siltrop.7.3.S64-S67
+Penjelasan isi sumber
+Pada sumber ini dijelaskan perkembangan penelitian kebakaran gambut di Indonesia, termasuk kajian karakteristik kebakaran, perilaku api, penyebab kebakaran, dampak terhadap gambut dan keanekaragaman hayati, pemetaan wilayah rawan, serta estimasi luas lahan terbakar. Penelitian tersebut juga membahas kaitan kebakaran gambut dengan pencemaran kabut asap lintas wilayah dan dampak sosial, ekonomi, serta lingkungan. 
+image
+Journal of Tropical Silviculture
+Kaitannya dengan permasalahan RIMBARA
+Sumber ini mendukung pentingnya pengembangan pemantauan yang dapat menghubungkan kondisi fisik di lapangan dengan informasi lokasi. Karena itu, RIMBARA menggabungkan sensor suhu, sensor aliran, sensor tekanan, serta sistem komunikasi jarak jauh. Jika data dari sejumlah perangkat ditempatkan pada peta, petugas dapat membandingkan kondisi antartitik dan memprioritaskan lokasi yang memerlukan pemeriksaan.
+Fitur pemetaan tersebut merupakan rancangan pengembangan RIMBARA, bukan hasil yang telah dibuktikan oleh penelitian Syaufina. Pengujian lapangan tetap diperlukan untuk menentukan apakah pemantauan tersebut benar-benar meningkatkan kecepatan deteksi atau efektivitas respons.
+Daftar pustaka
+Syaufina, L. (2016). Status of peatland fire research in Indonesia. Jurnal Silvikultur Tropika, 7(3), S64–S67. https://doi.org/10.29244/j-siltrop.7.3.S64-S67
+2. Komponen elektronik dan sistem pemantauan
+Referensi 4 — Espressif Systems, ESP32 Series Datasheet
+Tautan sumber: https://www.espressif.com/documentation/esp32_datasheet_en.pdf
+Penjelasan isi sumber
+Pada sumber ini dijelaskan spesifikasi teknis keluarga mikrokontroler ESP32, termasuk kemampuan pemrosesan, antarmuka komunikasi, GPIO, Wi-Fi, Bluetooth, dan karakteristik konsumsi daya. Fitur tersebut memungkinkan ESP32 menerima sinyal dari perangkat eksternal, mengolah data, dan menjalankan program kendali sesuai rancangan pengembang.
+Kaitannya dengan komponen RIMBARA
+ESP32 dipilih sebagai pusat pemrosesan data. Mikrokontroler menerima hasil pengukuran suhu dari modul MAX6675, membaca pulsa sensor aliran, membaca sinyal sensor tekanan, lalu memeriksa apakah data berada dalam rentang operasi yang telah ditentukan. Setelah itu, data dapat dikirim melalui modul LoRa menuju gateway.
+Dasar material secara kimia
+Chip ESP32 menggunakan teknologi semikonduktor berbasis silikon. Sifat listrik silikon dapat dikendalikan melalui proses doping, yaitu penambahan sejumlah kecil unsur tertentu untuk mengubah karakteristik pembawa muatan. Pengendalian tersebut memungkinkan terbentuknya transistor yang digunakan untuk menjalankan operasi logika dan pemrosesan data.
+Papan rangkaian elektronik juga umumnya menggunakan substrat laminat resin epoksi berpenguat serat kaca, dengan jalur tembaga sebagai penghantar listrik. Resin dan serat kaca memberikan dukungan struktural serta isolasi, sedangkan tembaga menghantarkan arus di antara komponen.
+Alasan pemilihan untuk RIMBARA
+ESP32 sesuai untuk prototipe karena menyediakan berbagai antarmuka komunikasi dalam satu perangkat. Namun, mikrokontroler ini harus ditempatkan dalam kompartemen yang terlindung dari air dan panas. Papan pengembangan biasa tidak otomatis tahan air atau memiliki ketahanan temperatur yang sesuai untuk ditanam di dalam tanah.
+Daftar pustaka
+Espressif Systems. (n.d.). ESP32 series datasheet. https://www.espressif.com/documentation/esp32_datasheet_en.pdf
+Referensi 5 — Analog Devices, MAX6675 Cold-Junction-Compensated K-Thermocouple-to-Digital Converter
+Tautan sumber: https://www.analog.com/en/products/max6675.html
+Penjelasan isi sumber
+Pada sumber ini dijelaskan bahwa MAX6675 merupakan rangkaian konverter yang menerima sinyal dari termokopel tipe K, melakukan kompensasi sambungan dingin (cold-junction compensation), dan mengubah sinyal menjadi data digital. Perangkat ini memiliki resolusi 12 bit, antarmuka SPI, serta rentang konversi suhu dari 0 hingga 1024 °C. Datasheet juga mencantumkan karakteristik akurasi yang perlu diperhatikan ketika merancang sistem pengukuran. 
+Kaitannya dengan komponen RIMBARA
+MAX6675 digunakan untuk membaca sinyal listrik yang dihasilkan termokopel tipe K. Tanpa rangkaian konversi, sinyal termoelektrik dari termokopel perlu diperkuat, dikompensasi, dan diubah menjadi data yang dapat dibaca mikrokontroler. MAX6675 mengintegrasikan fungsi tersebut sehingga mempermudah pengembangan prototipe.
+Dasar kimia dan material secara rinci
+Termokopel tipe K terdiri atas dua paduan logam berbeda, yaitu Chromel dan Alumel. Chromel merupakan paduan berbasis nikel-kromium, sedangkan Alumel merupakan paduan berbasis nikel yang mengandung aluminium dan unsur paduan lain. Kedua paduan menghasilkan respons termoelektrik berbeda ketika mengalami perbedaan suhu.
+Perbedaan tersebut menimbulkan tegangan yang berkaitan dengan perbedaan temperatur antara sambungan pengukuran dan sambungan referensi. Secara sederhana, prinsip ini dikenal sebagai efek Seebeck. MAX6675 kemudian mengolah tegangan tersebut menjadi nilai temperatur.
+Alasan pemilihan untuk RIMBARA
+Termokopel tipe K dapat digunakan untuk memantau titik pengamatan yang berpotensi mengalami peningkatan temperatur lebih tinggi daripada kondisi tanah normal. Rentang pengukurannya yang luas menjadikannya kandidat untuk pengamatan termal pada prototipe.
+Namun, batas suhu seluruh rakitan ditentukan oleh komponen yang paling membatasi. Walaupun MAX6675 mendukung pembacaan hingga 1024 °C, angka tersebut tidak berarti probe, kabel, konektor, atau selubungnya otomatis aman pada suhu yang sama. Selain itu, MAX6675 tidak dapat mengukur suhu negatif, sehingga batasan ini harus dipertimbangkan dalam pengujian.
+Daftar pustaka
+Analog Devices. (2021). MAX6675: Cold-junction-compensated K-thermocouple-to-digital converter (0°C to +1024°C) datasheet. https://www.analog.com/en/products/max6675.html
+Referensi 6 — Analog Devices, DS18B20 Programmable Resolution 1-Wire Digital Thermometer
+Tautan sumber: https://www.analog.com/en/products/ds18b20.html
+Penjelasan isi sumber
+Pada sumber ini dijelaskan bahwa DS18B20 merupakan sensor temperatur digital yang menggunakan komunikasi 1-Wire. Sensor tersebut menyediakan data suhu digital dan memiliki rentang pengukuran sekitar −55 hingga +125 °C, sehingga dapat digunakan untuk pengukuran temperatur pada berbagai aplikasi yang masih berada dalam batas operasinya.
+Kaitannya dengan komponen RIMBARA
+DS18B20 dapat berfungsi sebagai sensor suhu tambahan untuk mengamati zona yang relatif lebih dingin, seperti suhu lingkungan atau titik tanah yang tidak diperkirakan mengalami temperatur ekstrem. Data tersebut dapat dibandingkan dengan hasil pengukuran termokopel untuk membantu memahami perbedaan temperatur antartitik.
+Dasar kimia dan material
+DS18B20 menggunakan rangkaian semikonduktor yang menghasilkan data terkait temperatur. Pada produk berbentuk probe tahan air, elemen sensor biasanya dilindungi selubung logam, sedangkan kabel dilengkapi isolasi polimer. Namun, bahan dan kualitas rakitan berbeda menurut produsen.
+Alasan pemilihan untuk RIMBARA
+Komunikasi digital mempermudah pengumpulan data suhu tambahan. Akan tetapi, sensor ini tidak tepat dijadikan satu-satunya sensor pada titik yang mungkin mengalami temperatur jauh di atas 125 °C. Untuk zona tersebut, termokopel tipe K dengan probe dan kabel yang sesuai lebih layak dievaluasi.
+Daftar pustaka
+Analog Devices. (n.d.). DS18B20: Programmable resolution 1-Wire digital thermometer. https://www.analog.com/en/products/ds18b20.html
+Referensi 7 — NXP Semiconductors, MPX5700 Integrated Silicon Pressure Sensor
+Tautan sumber: https://www.nxp.com/products/MPX5700G
+Penjelasan isi sumber
+Pada sumber ini dijelaskan bahwa keluarga MPX5700 merupakan sensor tekanan berbasis silikon dengan pengondisian sinyal, kompensasi temperatur, dan kalibrasi yang terintegrasi. Varian MPX5700 memiliki rentang nominal hingga sekitar 700 kPa, tetapi tipe pengukuran dan konfigurasi tekanan harus disesuaikan dengan varian produk yang digunakan. NXP juga menyediakan dokumentasi mengenai kompatibilitas media untuk sensor tekanan berbasis silikon. 
+Kaitannya dengan komponen RIMBARA
+Sensor tekanan digunakan untuk mengetahui tekanan pada jalur distribusi air. Ketika sistem bekerja, tekanan yang terukur dapat membantu mengevaluasi apakah aliran berlangsung sesuai kondisi yang diharapkan. Penurunan tekanan dapat menunjukkan kemungkinan kebocoran atau gangguan suplai, sedangkan tekanan yang meningkat dapat mengindikasikan hambatan pada jalur air. Interpretasi tersebut harus mempertimbangkan karakteristik pompa, posisi sensor, dan debit.
+Dasar kimia dan material
+Sensor tekanan berbasis silikon umumnya memanfaatkan efek piezoresistif. Ketika tekanan menyebabkan deformasi pada elemen pengukur, hambatan listriknya berubah. Perubahan tersebut kemudian dikonversi menjadi sinyal yang berhubungan dengan tekanan.
+Alasan pemilihan untuk RIMBARA
+MPX5700 berpotensi digunakan apabila rentang tekanannya sesuai dengan kebutuhan alat. Akan tetapi, keluarga sensor ini tidak boleh langsung diasumsikan kompatibel dengan kontak air secara langsung. Varian, konfigurasi port, dan kompatibilitas media harus diperiksa sebelum dipasang. Jika tidak sesuai, gunakan sensor tekanan khusus cairan dengan material pembasah yang kompatibel.
+Daftar pustaka
+NXP Semiconductors. (n.d.). MPX5700G: 0 to 700 kPa, 5.0 V, differential/gauge/absolute pressure sensor. https://www.nxp.com/products/MPX5700G
+Referensi 8 — Semtech, SX1278 LoRa Connect Transceiver
+Tautan sumber: https://www.semtech.com/products/wireless-rf/lora-connect/sx1278
+Penjelasan isi sumber
+Pada sumber ini dijelaskan bahwa SX1278 merupakan transceiver radio yang mendukung modulasi LoRa serta beberapa format modulasi lain. Perangkat ini dirancang untuk komunikasi jarak jauh dengan konsumsi daya penerimaan yang relatif rendah. Kinerja komunikasi bergantung pada konfigurasi radio, antena, kondisi lingkungan, dan pengaturan jaringan. 
+Kaitannya dengan komponen RIMBARA
+SX1278 digunakan untuk mengirim data suhu, debit, tekanan, status perangkat, dan informasi lain dari unit pemantauan menuju gateway. Data dari gateway kemudian dapat diteruskan ke dashboard agar petugas tidak perlu selalu memeriksa setiap perangkat secara langsung.
+Dasar kimia dan material
+Transceiver tersusun atas rangkaian semikonduktor, jalur konduktor, komponen pasif, dan antena. Silikon digunakan dalam komponen semikonduktor untuk mengolah serta menghasilkan sinyal radio. Tembaga pada jalur sirkuit dan antena membantu menghantarkan arus listrik serta memancarkan atau menerima gelombang elektromagnetik.
+Alasan pemilihan untuk RIMBARA
+LoRa sesuai untuk prototipe pemantauan berkala yang membutuhkan pengiriman data dengan konsumsi energi relatif rendah. Akan tetapi, SX1278 tidak otomatis menyediakan akses internet atau dashboard. Sistem tetap membutuhkan penerima kompatibel, gateway, dan mekanisme penerusan data.
+Penempatan antena juga perlu diperhatikan karena badan logam yang tertanam dapat menghalangi atau melemahkan sinyal. Frekuensi dan konfigurasi radio harus mengikuti ketentuan yang berlaku di Indonesia.
+Daftar pustaka
+Semtech Corporation. (n.d.). SX1278 LoRa Connect transceiver. https://www.semtech.com/products/wireless-rf/lora-connect/sx1278
+3. Komponen pengatur aliran air dan sumber daya
+Referensi 9 — YF-S201, Sensor Aliran Air Berbasis Efek Hall
+Tautan sumber: [Dokumentasi dan pencarian datasheet YF-S201](https://www.google.com/search?q=YF-S201+water+flow+sensor+datasheet&amp;utm_source=chatgpt.com)
+Penjelasan isi sumber
+Pada dokumentasi teknis YF-S201 yang umum tersedia, sensor ini dijelaskan sebagai sensor aliran air yang menggunakan rotor internal dengan magnet dan sensor Hall. Ketika air melewati badan sensor, rotor berputar dan menghasilkan pulsa listrik yang frekuensinya berkaitan dengan laju aliran. Jumlah pulsa dalam interval waktu tertentu dapat dikonversi menjadi perkiraan volume atau debit setelah sensor dikalibrasi.
+Kaitannya dengan komponen RIMBARA
+YF-S201 digunakan untuk memeriksa apakah air benar-benar mengalir melalui jalur distribusi. Informasi ini penting karena perintah membuka katup tidak selalu menjamin air telah mencapai titik keluaran. Sensor aliran memungkinkan sistem membandingkan kondisi yang diperintahkan dengan kondisi aktual.
+Sebagai contoh, apabila katup diperintahkan terbuka tetapi sensor tidak mendeteksi pulsa aliran, sistem dapat memberikan peringatan bahwa suplai air perlu diperiksa. Namun, penyebabnya bisa berupa sumber air kosong, pompa tidak bekerja, pipa tersumbat, atau sensor mengalami kerusakan.
+Dasar kimia dan material
+Badan sensor YF-S201 pada varian umum menggunakan polimer, sedangkan rotor, poros, magnet, dan segelnya menggunakan material yang berbeda menurut produsen. Polimer dipilih karena relatif ringan, mudah dibentuk, dan dapat tahan terhadap korosi tertentu. Magnet menyediakan medan magnet yang dideteksi oleh elemen Hall.
+Elemen Hall biasanya dibuat menggunakan semikonduktor. Ketika arus listrik mengalir melalui elemen yang berada dalam medan magnet, timbul tegangan Hall yang dapat digunakan untuk mendeteksi perubahan posisi magnet pada rotor.
+Alasan pemilihan untuk RIMBARA
+YF-S201 cocok untuk tahap prototipe karena relatif sederhana dan ekonomis. Namun, sensor ini perlu diuji terhadap air yang mengandung partikel tanah atau sedimen. Rotor dapat terganggu oleh kotoran, sehingga sensor mungkin membutuhkan penyaring dan prosedur pembersihan. Jika akan digunakan dalam kondisi lapangan yang berat, sensor aliran yang dirancang untuk media berlumpur atau aplikasi industri perlu dipertimbangkan.
+Daftar pustaka
+YF-S201 Water Flow Sensor. (n.d.). Water flow sensor technical documentation. Dokumentasi model dan spesifikasi harus diverifikasi terhadap produsen atau penjual komponen yang digunakan. https://www.google.com/search?q=YF-S201+water+flow+sensor+datasheet
+Referensi 10 — u-blox, NEO-6 GPS Modules
+Tautan sumber: https://www.u-blox.com/en/product/neo-6-series
+Penjelasan isi sumber
+Pada sumber ini dijelaskan keluarga modul GPS NEO-6 yang dirancang untuk menerima sinyal satelit navigasi dan menghasilkan informasi posisi. Informasi yang diperoleh dapat mencakup koordinat geografis, waktu, dan data navigasi sesuai konfigurasi penerima.
+Kaitannya dengan komponen RIMBARA
+GPS dapat membantu menentukan lokasi unit pemantauan sehingga informasi suhu, tekanan, dan aliran dapat dikaitkan dengan titik tertentu pada peta. Dengan demikian, dashboard RIMBARA dapat menampilkan lokasi perangkat dan status pemantauan secara lebih terstruktur.
+Dasar kimia dan material
+Modul GPS menggunakan rangkaian semikonduktor untuk menerima serta memproses sinyal radio. Antenanya menggunakan material konduktif dan material dielektrik untuk menangkap sinyal elektromagnetik. Kinerja antena bergantung pada desain, frekuensi, posisi pemasangan, dan penghalang di sekitarnya.
+Alasan pemilihan untuk RIMBARA
+Informasi posisi dapat mempermudah petugas menemukan perangkat yang memerlukan pemeriksaan. Namun, antena GPS tidak sebaiknya diletakkan jauh di bawah tanah atau di dalam badan logam tertutup karena penerimaan sinyal satelit dapat melemah. Untuk perangkat yang tidak berpindah, koordinat lokasi juga dapat direkam saat pemasangan sehingga GPS tidak perlu aktif terus-menerus.
+Daftar pustaka
+u-blox. (n.d.). NEO-6 series GPS modules. https://www.u-blox.com/en/product/neo-6-series
+Referensi 11 — Arduino, Documentation
+Tautan sumber: https://docs.arduino.cc/
+Penjelasan isi sumber
+Pada sumber ini tersedia dokumentasi mengenai pemrograman mikrokontroler, penggunaan pin digital dan analog, komunikasi serial, serta integrasi perangkat elektronik. Dokumentasi tersebut dapat digunakan sebagai rujukan untuk memahami proses pembacaan sensor dan pengendalian aktuator dalam prototipe.
+Kaitannya dengan komponen RIMBARA
+Dokumentasi pemrograman dapat membantu pengembangan logika yang menghubungkan sensor dengan sistem kendali. Sebagai contoh, ESP32 dapat diprogram untuk membaca temperatur secara berkala, menghitung pulsa sensor aliran, membaca tekanan, kemudian mengirimkan data ke modul LoRa.
+Sistem juga dapat menerapkan pemeriksaan kesalahan, misalnya memberikan status gangguan ketika data sensor tidak berubah secara wajar atau ketika komunikasi dengan gateway terputus.
+Dasar material secara kimia
+Dokumentasi pemrograman tidak secara khusus menjelaskan kimia material, tetapi membantu mengintegrasikan komponen yang tersusun atas semikonduktor, penghantar tembaga, isolator polimer, dan komponen elektronik lainnya menjadi sistem yang dapat beroperasi bersama.
+Alasan pemilihan untuk RIMBARA
+Dokumentasi ini relevan sebagai sumber pendukung implementasi perangkat lunak. Untuk klaim mengenai ketahanan panas, akurasi sensor, dan kompatibilitas kimia material, datasheet masing-masing komponen tetap harus menjadi acuan utama.
+Daftar pustaka
+Arduino. (n.d.). Arduino documentation. https://docs.arduino.cc/
+Referensi 12 — Baterai Litium-Ion dan Sistem Pengelolaan Daya
+Tautan sumber: [Battery University — How do lithium-ion batteries work?](https://batteryuniversity.com/article/bu-205-types-of-lithium-ion?utm_source=chatgpt.com)
+Penjelasan isi sumber
+Pada sumber ini dijelaskan bahwa baterai litium-ion tersedia dalam berbagai jenis kimia dengan karakteristik tegangan, kapasitas, kepadatan energi, dan ketahanan termal yang berbeda. Oleh sebab itu, istilah baterai 18650 menunjukkan bentuk fisik sel silinder, bukan satu komposisi kimia tertentu.
+Kaitannya dengan komponen RIMBARA
+Baterai digunakan untuk memasok energi kepada mikrokontroler, sensor, dan sistem komunikasi. Karena RIMBARA dirancang untuk pemantauan lapangan, sumber daya harus mampu mendukung operasi sesuai target durasi dan frekuensi pengiriman data.
+Kapasitas baterai perlu dihitung berdasarkan arus rata-rata perangkat dan waktu operasi yang diinginkan. Konsumsi energi katup solenoid atau pompa juga perlu diperhitungkan apabila keduanya menggunakan baterai yang sama.
+Dasar kimia secara rinci
+Pada baterai litium-ion, energi disimpan dan dilepaskan melalui reaksi elektrokimia yang melibatkan perpindahan ion litium di antara elektroda. Jenis material elektroda menentukan karakteristik sel. Beberapa sel menggunakan material katoda berbasis nikel, mangan, dan kobalt, sedangkan jenis lain menggunakan litium-besi-fosfat. Setiap jenis memiliki kelebihan dan keterbatasan yang berbeda.
+Sel baterai harus dilengkapi dengan sistem proteksi yang sesuai untuk mengurangi risiko pengisian berlebih, pengosongan berlebih, dan arus berlebih. Pengelolaan temperatur juga penting karena baterai dapat mengalami penurunan kinerja atau kondisi berbahaya ketika terpapar panas berlebihan.
+Alasan pemilihan untuk RIMBARA
+Sel 18650 dapat menjadi pilihan prototipe karena formatnya ringkas dan tersedia dalam beragam kapasitas. Akan tetapi, pemilihan harus didasarkan pada spesifikasi sel yang jelas, bukan hanya ukuran fisiknya. Baterai juga perlu ditempatkan terpisah dari titik pengukuran suhu tinggi.
+Daftar pustaka
+Battery University. (n.d.). Types of lithium-ion batteries. https://batteryuniversity.com/article/bu-205-types-of-lithium-ion
+4. Material fisik dan dasar kimia pemilihannya
+Referensi 13 — Nickel Institute, Stainless Steel: The Role of Nickel
+Tautan sumber: https://nickelinstitute.org/en/nickel-applications/stainless-steel
+Penjelasan isi sumber
+Pada sumber ini dijelaskan bahwa baja tahan karat merupakan kelompok paduan berbasis besi yang memiliki ketahanan terhadap korosi. Kromium merupakan unsur utama yang berperan membentuk lapisan oksida pelindung pada permukaan, sedangkan nikel pada jenis baja tertentu membantu meningkatkan keuletan, kemampuan pembentukan, kemampuan pengelasan, dan karakteristik ketahanan korosi. 
+Kaitannya dengan material RIMBARA
+Baja tahan karat dapat digunakan untuk badan nozzle, fitting, serta selubung probe yang membutuhkan kekuatan mekanik dan ketahanan terhadap lingkungan lembap. Material ini relevan karena komponen RIMBARA akan terpapar air dan tanah, yang dapat mempercepat korosi pada logam tertentu.
+Dasar kimia secara rinci
+Ketika permukaan baja tahan karat terpapar oksigen, kromium membantu membentuk lapisan pasif yang kaya oksida kromium. Lapisan ini mengurangi laju reaksi lebih lanjut antara logam dan lingkungan.
+Persamaan ideal yang menggambarkan pembentukan oksida kromium adalah:
+\[ 4Cr+3O_2\rightarrow 2Cr_2O_3 \]
+Persamaan ini merupakan representasi sederhana; lapisan pasif aktual memiliki struktur dan komposisi yang lebih kompleks.
+Nikel berperan pada struktur dan sifat mekanik paduan, tetapi tidak berarti seluruh jenis baja tahan karat mempunyai ketahanan korosi yang sama. Lingkungan yang mengandung klorida dapat memicu korosi sumuran atau korosi celah pada grade tertentu.
+Alasan pemilihan untuk RIMBARA
+Stainless steel 304 dapat dievaluasi untuk badan nozzle dan komponen mekanis umum. Untuk lingkungan yang lebih agresif, grade lain seperti 316 dapat dipertimbangkan setelah mengevaluasi kondisi air, kandungan klorida, biaya, dan kebutuhan kekuatan.
+Daftar pustaka
+Nickel Institute. (n.d.). Stainless steel: The role of nickel. https://nickelinstitute.org/en/nickel-applications/stainless-steel
+Nickel Institute. (n.d.). The nickel advantage. https://nickelinstitute.org/en/nickel-applications/stainless-steel/the-nickel-advantage
+Referensi 14 — International Electrotechnical Commission, IEC 60529: Degrees of Protection Provided by Enclosures (IP Code)
+Tautan sumber: https://www.iec.ch/ip-ratings
+Penjelasan isi sumber
+Pada sumber ini dijelaskan konsep kode IP (Ingress Protection) yang digunakan untuk mengklasifikasikan tingkat perlindungan suatu selungkup terhadap masuknya benda padat dan air berdasarkan kondisi pengujian tertentu.
+Kaitannya dengan material RIMBARA
+Kompartemen elektronik RIMBARA harus melindungi ESP32, modul LoRa, konektor, dan rangkaian daya dari air serta debu. Tingkat perlindungan perlu dipilih berdasarkan kondisi pemasangan, kemungkinan perendaman, percikan air, dan metode perawatan perangkat.
+Dasar material secara kimia
+Selungkup dapat dibuat dari polimer teknik atau logam yang sesuai. Polimer dapat memberikan massa rendah dan ketahanan terhadap korosi tertentu, sedangkan logam dapat menawarkan kekuatan mekanik dan kemampuan pengelolaan panas. Namun, perlindungan air tidak ditentukan oleh bahan selungkup saja. Sambungan, gasket, kabel masuk, konektor, dan kualitas perakitan turut menentukan hasilnya.
+Alasan pemilihan untuk RIMBARA
+Target IP67 dapat dipertimbangkan jika desain memerlukan perlindungan terhadap debu dan perendaman sementara sesuai kondisi pengujian standar. Akan tetapi, label IP67 tidak membuktikan bahwa perangkat tahan terhadap temperatur tinggi, tekanan air yang tidak tercakup pengujian, atau seluruh kondisi kimia tanah gambut. Rakitan akhir harus diuji sesuai standar yang relevan.
+Daftar pustaka
+International Electrotechnical Commission. (n.d.). IP ratings. https://www.iec.ch/ip-ratings
+Referensi 15 — Parker Hannifin, O-Ring Handbook
+Tautan sumber: [Parker Hannifin — O-Ring Handbook](https://www.parker.com/?utm_source=chatgpt.com)
+Penjelasan isi sumber
+Pada sumber ini tersedia panduan teknis mengenai pemilihan O-ring dan material penyekat untuk berbagai aplikasi. Pemilihan seal perlu mempertimbangkan temperatur, tekanan, kompatibilitas dengan fluida, deformasi, dan karakteristik mekanik material.
+Kaitannya dengan material RIMBARA
+O-ring atau gasket dapat digunakan pada sambungan badan nozzle, penutup kompartemen elektronik, dan fitting jalur air. Seal yang sesuai membantu mengurangi risiko kebocoran air ke kompartemen elektronik maupun kebocoran pada jalur distribusi.
+Dasar kimia secara rinci
+Karet silikon, EPDM, dan FKM merupakan contoh elastomer dengan struktur kimia dan karakteristik berbeda.
+- Silikon:      memiliki rantai utama siloksana, yaitu ikatan berulang Si–O–Si. Material      ini dapat mempertahankan fleksibilitas pada rentang temperatur yang      relatif luas, bergantung pada grade.
+- EPDM:      merupakan elastomer berbasis etilena, propilena, dan diena. Material ini      sering digunakan untuk aplikasi air dan cuaca, tetapi kompatibilitasnya      harus tetap diperiksa terhadap temperatur serta bahan kimia yang mungkin      terpapar.
+- FKM:      merupakan keluarga elastomer berfluorin yang sering digunakan ketika      dibutuhkan ketahanan terhadap temperatur atau bahan kimia tertentu. Namun,      kesesuaiannya terhadap media dan kondisi operasi tetap bergantung pada      formulasi.
+Alasan pemilihan untuk RIMBARA
+Material seal tidak boleh dipilih hanya berdasarkan kelenturan. Seal harus sesuai dengan jenis air, tekanan, temperatur, dan bentuk sambungan. Uji kebocoran perlu dilakukan setelah perakitan untuk memastikan air tidak masuk ke kompartemen elektronik.
+Daftar pustaka
+Parker Hannifin Corporation. (n.d.). O-ring handbook. https://www.parker.com/
+Referensi 16 — Material PVC dan Polyurethane untuk Pipa serta Pelindung Kabel
+Tautan sumber: [MatWeb — Material Property Data](https://www.matweb.com/?utm_source=chatgpt.com)
+Penjelasan isi sumber
+Pada sumber ini tersedia data sifat material yang dapat digunakan untuk membandingkan karakteristik mekanik dan fisik berbagai polimer. Data tersebut dapat mencakup kekuatan tarik, modulus elastisitas, temperatur penggunaan, serta karakteristik material lain sesuai entri yang tersedia.
+Kaitannya dengan material RIMBARA
+PVC dan polyurethane (PU) dapat dipertimbangkan untuk bagian pipa, selang, atau pelindung kabel yang tidak terpapar kondisi di luar batas spesifikasinya. Pemilihan polimer dapat mengurangi massa perangkat dan memudahkan pemasangan komponen fleksibel.
+Dasar kimia secara rinci
+PVC memiliki unit ulang polimer yang dapat direpresentasikan sebagai \((C_2H_3Cl)_n\). Ikatan pada rantai polimer memberikan sifat isolasi listrik yang bermanfaat pada sejumlah aplikasi kabel dan pipa. Formulasi PVC dapat dibuat lebih fleksibel melalui penambahan bahan tertentu.
+Polyurethane memiliki gugus uretan pada rantai polimernya. Struktur dan formulasi PU dapat menghasilkan material yang tahan abrasi, fleksibel, atau mempunyai sifat mekanik tertentu sesuai jenis produk.
+Alasan pemilihan untuk RIMBARA
+PVC dapat dievaluasi untuk pipa atau saluran yang memenuhi batas temperatur dan tekanan, sedangkan PU dapat dipertimbangkan untuk selang fleksibel atau pelindung kabel tertentu. Namun, keduanya tidak boleh digunakan langsung pada titik bersuhu tinggi tanpa spesifikasi yang sesuai. Data dari MatWeb sebaiknya digunakan sebagai pembanding awal dan dikonfirmasi melalui datasheet produsen material yang akan dibeli.
+Daftar pustaka
+MatWeb. (n.d.). Material property data. https://www.matweb.com/</textarea>
+<script>
+(function(){
+const raw=document.getElementById('rawSource').value;
+const rendered=document.getElementById('rendered');
+const nav=document.getElementById('navLinks');
+const lines=raw.split('\n');
+let refCount=0;
+const urlRegex=/(https?:\/\/[^\s<>\]]+)/g;
+function linkify(text){
+  const parts=text.split(urlRegex);
+  return parts.map(part=>{
+    if(/^https?:\/\//.test(part)){
+      const clean=part.replace(/[.,;:)]+$/,'');
+      const tail=part.slice(clean.length);
+      return '<a class="external" href="'+clean.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" target="_blank" rel="noopener noreferrer">'+clean+'</a>'+tail;
+    }
+    return part;
+  }).join('');
+}
+lines.forEach((line,index)=>{
+  const div=document.createElement('p');
+  div.className='content-line';
+  if(line.startsWith('RIMBARA:')) div.classList.add('title-line');
+  if(/^Referensi \d+ —/.test(line)){
+    refCount++;
+    div.classList.add('reference');
+    div.id='referensi-'+refCount;
+    const a=document.createElement('a');
+    a.href='#'+div.id;
+    a.textContent='Referensi '+refCount+' — '+line.split(' — ').slice(1).join(' — ');
+    nav.appendChild(a);
+  } else if(/^\d+\. /.test(line)) {
+    div.classList.add('section');
+  } else if(['Judul:','Tautan sumber:','Penjelasan isi sumber','Kaitannya dengan permasalahan RIMBARA','Kaitannya dengan komponen RIMBARA','Kaitannya dengan material RIMBARA','Dasar material secara kimia','Dasar material secara kimia','Dasar kimia secara rinci','Dasar kimia dan material secara rinci','Dasar kimia dan material','Dasar kimia secara rinci','Alasan pemilihan untuk RIMBARA','Daftar pustaka'].includes(line)) {
+    div.classList.add('label-line');
+    if(line==='Daftar pustaka') div.classList.add('bibliography');
+  }
+  if(line.startsWith('- ')) div.style.paddingLeft='16px';
+  if(line.trim()==='image') div.style.color='#8a520f';
+  div.innerHTML=line ? linkify(line) : '&nbsp;';
+  rendered.appendChild(div);
+});
+document.getElementById('printBtn').addEventListener('click',()=>window.print());
+})();
+</script>
+</body>
+</html>
